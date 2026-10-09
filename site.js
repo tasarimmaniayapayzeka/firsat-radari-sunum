@@ -76,6 +76,7 @@
   }
 
   var IO = 'IntersectionObserver' in window;
+  var inceIsaretci = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   /* ---------- Üst çubuk ---------- */
 
@@ -181,6 +182,38 @@
     }
   }
 
+  /* ---------- Mağaza bandı: kesintisiz döngü ----------
+     Liste ekran genişliğini aşana kadar kendi öğeleriyle çoğaltılır, sonra bütün liste bir kez kopyalanır;
+     CSS -%50 kaydırır. Kopyalar ekran okuyucuya gizli ve klavyeyle odaklanmaz. Hız px/sn sabit. */
+
+  function bantKopya(dugum) {
+    var k = dugum.cloneNode(true);
+    k.setAttribute('aria-hidden', 'true');
+    if (k.matches('a, button')) k.setAttribute('tabindex', '-1');
+    $$('a, button', k).forEach(function (a) { a.setAttribute('tabindex', '-1'); });
+    $$('img', k).forEach(function (i) { i.setAttribute('alt', ''); });
+    return k;
+  }
+
+  if (hareket) {
+    $$('.mbant__sira').forEach(function (sira) {
+      var liste = $('.mbant__liste', sira);
+      if (!liste) return;
+      var ogeler = Array.prototype.slice.call(liste.children);
+      var hedef = Math.max(window.innerWidth, (window.screen && window.screen.width) || 0, 1280) + 240;
+      var tur = 0;
+      while (liste.getBoundingClientRect().width < hedef && tur++ < 8) {
+        ogeler.forEach(function (o) { liste.appendChild(bantKopya(o)); });
+      }
+      var ikinci = bantKopya(liste);
+      ikinci.removeAttribute('aria-label');
+      sira.appendChild(ikinci);
+      var hiz = parseFloat(sira.dataset.hiz) || 32;
+      sira.style.setProperty('--sure', (liste.getBoundingClientRect().width / hiz).toFixed(1) + 's');
+      sira.classList.add('mbant__sira--akar');
+    });
+  }
+
   /* ---------- Bölüm başlıkları: kelime kelime ---------- */
 
   var basliklar = $$('h2[data-kelime]');
@@ -194,49 +227,165 @@
     basliklar.forEach(function (b) { basGoz.observe(b); });
   }
 
-  /* ---------- Bugün doğrulandı: kademeli giriş + sayaç ---------- */
+  /* ---------- Bugün doğrulandı: kademeli giriş + sayaç + filtre ---------- */
 
   var kartlar = $$('.izgara .kart');
+  var kartGoster = function (k, gecikme) {
+    setTimeout(function () {
+      k.classList.add('goruldu');
+      $$('strong[data-fiyat]', k).forEach(sayac);
+    }, gecikme);
+  };
   if (kartlar.length) {
-    var kartGoster = function (k, gecikme) {
-      setTimeout(function () {
-        k.classList.add('goruldu');
-        $$('strong[data-fiyat]', k).forEach(sayac);
-      }, gecikme);
-    };
     if (hareket && IO) {
       var kartGoz = new IntersectionObserver(function (girdiler) {
         girdiler.forEach(function (g) {
           if (!g.isIntersecting) return;
           kartGoz.unobserve(g.target);
-          var sira = kartlar.indexOf(g.target);
-          var sutun = window.innerWidth >= 1024 ? 3 : (window.innerWidth >= 640 ? 2 : 1);
-          kartGoster(g.target, (sira % sutun) * 80);
+          var gorunur = kartlar.filter(function (k) { return !k.hidden; });
+          var sira = gorunur.indexOf(g.target);
+          var sutun = window.innerWidth >= 1024 ? 3 : (window.innerWidth >= 720 ? 2 : 1);
+          kartGoster(g.target, (Math.max(sira, 0) % sutun) * 80);
         });
       }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
       kartlar.forEach(function (k) { kartGoz.observe(k); });
     } else {
       kartlar.forEach(function (k) { kartGoster(k, 0); });
     }
-    // Yazdırmada her şey görünür olsun.
-    window.addEventListener('beforeprint', function () {
-      kartlar.forEach(function (k) { kartGoster(k, 0); });
-      $$('h2[data-kelime], .hero').forEach(function (b) { b.classList.add('goster'); });
-    });
   }
 
-  /* ---------- Nasıl doğruluyoruz: adımlar sırayla yanar ---------- */
+  // Filtre çipleri: aria-pressed, kalan kartlar kısa bir girişle gelir, sonuç ekran okuyucuya bildirilir.
+  var cipler = $$('.filtre__cip');
+  var filtreDurum = $('#filtre-durum');
+  cipler.forEach(function (cip) {
+    cip.addEventListener('click', function () {
+      var f = cip.dataset.filtre;
+      cipler.forEach(function (c) { c.setAttribute('aria-pressed', c === cip ? 'true' : 'false'); });
+      var sayi = 0;
+      kartlar.forEach(function (k) {
+        var uygun = f === 'hepsi' || k.dataset.kategori === f;
+        k.classList.remove('kart--gir');
+        k.hidden = !uygun;
+        if (uygun) {
+          k.style.setProperty('--s', sayi++);
+          k.classList.add('goruldu');
+          $$('strong[data-fiyat]', k).forEach(sayac);
+        }
+      });
+      void document.body.offsetWidth; // animasyonu yeniden başlatmak için
+      kartlar.forEach(function (k) { if (!k.hidden) k.classList.add('kart--gir'); });
+      if (filtreDurum) filtreDurum.textContent = sayi + ' fırsat gösteriliyor.';
+    });
+  });
+
+  /* ---------- Kategoriler: kademeli giriş + 3D eğim ---------- */
+
+  var bento = $('.bento');
+  var karolar = $$('.karo');
+  if (bento && karolar.length) {
+    if (hareket && IO) {
+      var bentoGoz = new IntersectionObserver(function (girdiler) {
+        if (!girdiler[0].isIntersecting) return;
+        karolar.forEach(function (k) { k.classList.add('goruldu'); });
+        bentoGoz.disconnect();
+      }, { threshold: 0.12 });
+      bentoGoz.observe(bento);
+    } else {
+      karolar.forEach(function (k) { k.classList.add('goruldu'); });
+    }
+
+    // Fare konumuna göre ±6° eğim; yalnız ince işaretçi ve ≥ 1024 px; rAF ile, transform değişkenleri.
+    if (hareket && inceIsaretci) {
+      var egimHedef = null, ex = 0, ey = 0, egimRaf = 0;
+      var egimUygula = function () {
+        egimRaf = 0;
+        if (!egimHedef) return;
+        if (window.innerWidth < 1024) { egimHedef.style.removeProperty('--rx'); egimHedef.style.removeProperty('--ry'); return; }
+        egimHedef.style.setProperty('--rx', (-ey * 6).toFixed(2) + 'deg');
+        egimHedef.style.setProperty('--ry', (ex * 6).toFixed(2) + 'deg');
+      };
+      karolar.forEach(function (karo) {
+        var bag = $('.karo__bag', karo);
+        if (!bag) return;
+        karo.addEventListener('pointermove', function (e) {
+          var r = karo.getBoundingClientRect(); // eğilmeyen dış kutu: ölçüm sabit kalır
+          ex = Math.max(-1, Math.min(1, ((e.clientX - r.left) / r.width) * 2 - 1));
+          ey = Math.max(-1, Math.min(1, ((e.clientY - r.top) / r.height) * 2 - 1));
+          egimHedef = bag;
+          if (!egimRaf) egimRaf = requestAnimationFrame(egimUygula);
+        });
+        karo.addEventListener('pointerleave', function () {
+          if (egimHedef === bag) egimHedef = null;
+          bag.style.removeProperty('--rx');
+          bag.style.removeProperty('--ry');
+        });
+      });
+    }
+  }
+
+  /* ---------- Nasıl doğruluyoruz: aktif adım, sahne ve ilerleme hattı ---------- */
 
   var adimlar = $$('.adim');
+  var sahneGorseller = $$('.sahne__gorsel');
+  var sahneEtiket = $('.sahne__etiket');
+  var dugumler = $$('.ilerleme__dugum');
+  var ilerleme = $('.ilerleme');
+  var etiketler = ['Buluyoruz', 'Doğruluyoruz', 'Paylaşıyoruz'];
+  var ikonlar = ['ph-magnifying-glass', 'ph-seal-check', 'ph-share-network'];
+  var aktifAdim = 0;
+  var etiketZamani = 0;
+
+  function etiketYaz(n) {
+    if (!sahneEtiket) return;
+    var ikon = $('i', sahneEtiket), yazi = $('span', sahneEtiket);
+    if (ikon) ikon.className = 'ph ' + ikonlar[n];
+    if (yazi) yazi.textContent = etiketler[n];
+  }
+
+  function adimSec(n) {
+    if (n < 0 || n === aktifAdim) return;
+    aktifAdim = n;
+    adimlar.forEach(function (a, i) { a.classList.toggle('adim--aktif', i === n); });
+    sahneGorseller.forEach(function (g, i) { g.classList.toggle('sahne__gorsel--aktif', i === n); });
+    dugumler.forEach(function (d, i) {
+      d.classList.toggle('ilerleme__dugum--gecti', i <= n);
+      d.classList.toggle('ilerleme__dugum--aktif', i === n);
+      if (i === n) d.setAttribute('aria-current', 'step'); else d.removeAttribute('aria-current');
+    });
+    if (ilerleme && dugumler.length > 1) ilerleme.style.setProperty('--ilerleme', String(n / (dugumler.length - 1)));
+    if (sahneEtiket) {
+      if (!hareket) { etiketYaz(n); return; }
+      sahneEtiket.classList.add('degisiyor');
+      clearTimeout(etiketZamani);
+      etiketZamani = setTimeout(function () {
+        etiketYaz(aktifAdim);
+        sahneEtiket.classList.remove('degisiyor');
+      }, 240);
+    }
+  }
+
   if (IO && adimlar.length) {
     var adimGoz = new IntersectionObserver(function (girdiler) {
       girdiler.forEach(function (g) {
-        if (!g.isIntersecting) return;
-        adimlar.forEach(function (a) { a.classList.toggle('adim--aktif', a === g.target); });
+        if (g.isIntersecting) adimSec(adimlar.indexOf(g.target));
       });
-    }, { rootMargin: '-42% 0px -42% 0px', threshold: 0 });
+    }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
     adimlar.forEach(function (a) { adimGoz.observe(a); });
   }
+  dugumler.forEach(function (d, i) {
+    d.addEventListener('click', function () {
+      if (!adimlar[i]) return;
+      adimlar[i].scrollIntoView({ behavior: hareket ? 'smooth' : 'auto', block: 'center' });
+      adimSec(i);
+    });
+  });
+
+  // Yazdırmada her şey görünür olsun.
+  window.addEventListener('beforeprint', function () {
+    kartlar.forEach(function (k) { kartGoster(k, 0); });
+    karolar.forEach(function (k) { k.classList.add('goruldu'); });
+    $$('h2[data-kelime], .hero').forEach(function (b) { b.classList.add('goster'); });
+  });
 
   /* ---------- Bülten formu (bağlı değil; satır içi doğrulama) ---------- */
 

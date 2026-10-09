@@ -65,7 +65,7 @@
       <ul class="hero__kartlar" aria-label="Son doğrulananlar">
         <li class="yuzen yuzen--1" data-derinlik="14" style="--i:0">
           <article class="hkart hkart--aktif">
-            <p class="hkart__ust"><i class="ph ph-check-circle" aria-hidden="true"></i><span class="mono">14:30</span> doğrulandı</p>
+            <p class="hkart__ust"><span class="rozet">Reklam · Trendyol</span><span class="hkart__zaman"><i class="ph ph-check-circle" aria-hidden="true"></i><span class="mono">14:30</span> doğrulandı</span></p>
             <div class="hkart__gorsel"><img src="gorsel/urun-1.jpg" alt="" width="1200" height="1500" onerror="this.hidden=true"></div>
             <div>
               <p class="hkart__ad">Airfryer XL 6,2 L</p>
@@ -76,7 +76,7 @@
         </li>
         <li class="yuzen yuzen--2" data-derinlik="26" style="--i:1">
           <article class="hkart">
-            <p class="hkart__ust"><i class="ph ph-check-circle" aria-hidden="true"></i><span class="mono">14:45</span> doğrulandı</p>
+            <p class="hkart__ust"><span class="rozet">Reklam · Boyner</span><span class="hkart__zaman"><i class="ph ph-check-circle" aria-hidden="true"></i><span class="mono">14:45</span> doğrulandı</span></p>
             <div class="hkart__gorsel"><img src="gorsel/urun-4.jpg" alt="" width="1200" height="1500" onerror="this.hidden=true"></div>
             <div>
               <p class="hkart__ad">Slim fit jean</p>
@@ -86,7 +86,7 @@
         </li>
         <li class="yuzen yuzen--3" data-derinlik="20" style="--i:2">
           <article class="hkart">
-            <p class="hkart__ust"><i class="ph ph-check-circle" aria-hidden="true"></i><span class="mono">14:15</span> doğrulandı</p>
+            <p class="hkart__ust"><span class="rozet">Reklam · Hepsiburada</span><span class="hkart__zaman"><i class="ph ph-check-circle" aria-hidden="true"></i><span class="mono">14:15</span> doğrulandı</span></p>
             <div class="hkart__gorsel"><img src="gorsel/urun-5.jpg" alt="" width="1200" height="1500" onerror="this.hidden=true"></div>
             <div>
               <p class="hkart__ad">24 parça yemek takımı</p>
@@ -98,64 +98,114 @@
     </div>
   </section>
 
-  <!-- Çift sıra kayan şerit: bugün doğrulananlar (içerik ızgarada da var; ekran okuyucuya gizli) -->
-  <div class="serit" aria-hidden="true">
-    <div class="serit__sira">
-      <ul class="serit__liste">
-        <li class="serit__oge">Airfryer XL 4.299 TL <span>14:30 · Trendyol</span></li>
-        <li class="serit__oge">Kablosuz kulaklık 1.899 TL <span>11:10 · Teknosa</span></li>
-        <li class="serit__oge">Deri sneaker 2.579 TL <span>13:05 · Boyner</span></li>
-        <li class="serit__oge">Slim fit jean 1.199 TL <span>14:45 · Boyner</span></li>
-        <li class="serit__oge">24 parça yemek takımı 1.649 TL <span>14:15 · Trendyol</span></li>
-        <li class="serit__oge">Kablosuz dik süpürge 8.499 TL <span>09:40 · Hepsiburada</span></li>
-        <li class="serit__oge">Nemlendirici krem 50 ml 349 TL <span>12:20 · Trendyol</span></li>
-        <li class="serit__oge">Koşu ayakkabısı 2.199 TL <span>10:05 · Hepsiburada</span></li>
-      </ul>
-      <ul class="serit__liste">
-        <li class="serit__oge">Airfryer XL 4.299 TL <span>14:30 · Trendyol</span></li>
-        <li class="serit__oge">Kablosuz kulaklık 1.899 TL <span>11:10 · Teknosa</span></li>
-        <li class="serit__oge">Deri sneaker 2.579 TL <span>13:05 · Boyner</span></li>
-        <li class="serit__oge">Slim fit jean 1.199 TL <span>14:45 · Boyner</span></li>
-        <li class="serit__oge">24 parça yemek takımı 1.649 TL <span>14:15 · Trendyol</span></li>
-        <li class="serit__oge">Kablosuz dik süpürge 8.499 TL <span>09:40 · Hepsiburada</span></li>
-        <li class="serit__oge">Nemlendirici krem 50 ml 349 TL <span>12:20 · Trendyol</span></li>
-        <li class="serit__oge">Koşu ayakkabısı 2.199 TL <span>10:05 · Hepsiburada</span></li>
-      </ul>
+  <!-- MAĞAZA BANDI: üst sıra mağaza logoları (sola akar), alt sıra son doğrulanan ürünler (sağa akar).
+       Fırsat sayıları, fiyatlar ve saatler ÖRNEK VERİDİR. Döngü kopyalarını site.js ekler (ekran okuyucuya gizli). -->
+  <section class="mbant koyu" id="magazalar" aria-labelledby="mbant-baslik">
+    <div class="mbant__isik" aria-hidden="true"></div>
+    <div class="kap mbant__bas">
+      <h2 id="mbant-baslik">Doğruladığımız mağazalar</h2>
+      <p class="mbant__saat"><i class="ph ph-clock" aria-hidden="true"></i>Son kontrol 14:50</p>
     </div>
-    <div class="serit__sira serit__sira--yavas">
-      <ul class="serit__liste">
-        <li class="serit__oge">24 parça yemek takımı 1.649 TL <span>14:15 · Trendyol</span></li>
-        <li class="serit__oge">Kablosuz dik süpürge 8.499 TL <span>09:40 · Hepsiburada</span></li>
-        <li class="serit__oge">Nemlendirici krem 50 ml 349 TL <span>12:20 · Trendyol</span></li>
-        <li class="serit__oge">Koşu ayakkabısı 2.199 TL <span>10:05 · Hepsiburada</span></li>
-        <li class="serit__oge">Airfryer XL 4.299 TL <span>14:30 · Trendyol</span></li>
-        <li class="serit__oge">Kablosuz kulaklık 1.899 TL <span>11:10 · Teknosa</span></li>
-        <li class="serit__oge">Deri sneaker 2.579 TL <span>13:05 · Boyner</span></li>
-        <li class="serit__oge">Slim fit jean 1.199 TL <span>14:45 · Boyner</span></li>
-      </ul>
-      <ul class="serit__liste">
-        <li class="serit__oge">24 parça yemek takımı 1.649 TL <span>14:15 · Trendyol</span></li>
-        <li class="serit__oge">Kablosuz dik süpürge 8.499 TL <span>09:40 · Hepsiburada</span></li>
-        <li class="serit__oge">Nemlendirici krem 50 ml 349 TL <span>12:20 · Trendyol</span></li>
-        <li class="serit__oge">Koşu ayakkabısı 2.199 TL <span>10:05 · Hepsiburada</span></li>
-        <li class="serit__oge">Airfryer XL 4.299 TL <span>14:30 · Trendyol</span></li>
-        <li class="serit__oge">Kablosuz kulaklık 1.899 TL <span>11:10 · Teknosa</span></li>
-        <li class="serit__oge">Deri sneaker 2.579 TL <span>13:05 · Boyner</span></li>
-        <li class="serit__oge">Slim fit jean 1.199 TL <span>14:45 · Boyner</span></li>
-      </ul>
+    <div class="mbant__pist">
+      <div class="mbant__sira mbant__sira--logo" data-hiz="46">
+        <ul class="mbant__liste" aria-label="Mağazalar ve bugünkü fırsat sayıları">
+          <li><a class="mcip" href="#bugun"><img src="gorsel/logo/trendyol.svg" alt="Trendyol" width="74" height="30"><span class="mcip__sayi">18 fırsat</span></a></li>
+          <li><a class="mcip" href="#bugun"><img src="gorsel/logo/hepsiburada.svg" alt="Hepsiburada" width="153" height="26"><span class="mcip__sayi">14 fırsat</span></a></li>
+          <li><a class="mcip" href="#bugun"><img src="gorsel/logo/teknosa.svg" alt="Teknosa" width="109" height="30"><span class="mcip__sayi">9 fırsat</span></a></li>
+          <li><a class="mcip" href="#bugun"><img src="gorsel/logo/boyner.svg" alt="Boyner" width="74" height="32"><span class="mcip__sayi">11 fırsat</span></a></li>
+          <li><a class="mcip" href="#bugun"><img src="gorsel/logo/n11.svg" alt="n11" width="85" height="28"><span class="mcip__sayi">7 fırsat</span></a></li>
+          <li><a class="mcip" href="#bugun"><img src="gorsel/logo/amazon.svg" alt="Amazon" width="99" height="30"><span class="mcip__sayi">8 fırsat</span></a></li>
+        </ul>
+      </div>
+      <div class="mbant__sira mbant__sira--urun" data-hiz="36">
+        <ul class="mbant__liste" aria-label="Son doğrulanan ürünler">
+          <li class="mkart">
+            <img class="mkart__gorsel" src="gorsel/urun-1.jpg" alt="" width="64" height="80" loading="lazy">
+            <div class="mkart__metin">
+              <p class="mkart__etiket">Reklam ·<span class="mkart__logo"><img src="gorsel/logo/trendyol.svg" alt="Trendyol" width="39" height="16"></span></p>
+              <p class="mkart__ad">Airfryer XL</p>
+              <p class="mkart__alt"><span class="mkart__fiyat">4.299 TL</span><span class="mkart__saat"><i class="ph ph-check-circle" aria-hidden="true"></i>14:30</span></p>
+            </div>
+          </li>
+          <li class="mkart">
+            <img class="mkart__gorsel" src="gorsel/urun-2.jpg" alt="" width="64" height="80" loading="lazy">
+            <div class="mkart__metin">
+              <p class="mkart__etiket">Reklam ·<span class="mkart__logo"><img src="gorsel/logo/teknosa.svg" alt="Teknosa" width="58" height="16"></span></p>
+              <p class="mkart__ad">Kablosuz kulaklık</p>
+              <p class="mkart__alt"><span class="mkart__fiyat">1.899 TL</span><span class="mkart__saat"><i class="ph ph-check-circle" aria-hidden="true"></i>11:10</span></p>
+            </div>
+          </li>
+          <li class="mkart">
+            <img class="mkart__gorsel" src="gorsel/urun-3.jpg" alt="" width="64" height="80" loading="lazy">
+            <div class="mkart__metin">
+              <p class="mkart__etiket">Reklam ·<span class="mkart__logo"><img src="gorsel/logo/boyner.svg" alt="Boyner" width="42" height="18"></span></p>
+              <p class="mkart__ad">Deri sneaker</p>
+              <p class="mkart__alt"><span class="mkart__fiyat">2.579 TL</span><span class="mkart__saat"><i class="ph ph-check-circle" aria-hidden="true"></i>13:05</span></p>
+            </div>
+          </li>
+          <li class="mkart">
+            <img class="mkart__gorsel" src="gorsel/urun-4.jpg" alt="" width="64" height="80" loading="lazy">
+            <div class="mkart__metin">
+              <p class="mkart__etiket">Reklam ·<span class="mkart__logo"><img src="gorsel/logo/boyner.svg" alt="Boyner" width="42" height="18"></span></p>
+              <p class="mkart__ad">Slim fit jean</p>
+              <p class="mkart__alt"><span class="mkart__fiyat">1.199 TL</span><span class="mkart__saat"><i class="ph ph-check-circle" aria-hidden="true"></i>14:45</span></p>
+            </div>
+          </li>
+          <li class="mkart">
+            <img class="mkart__gorsel" src="gorsel/urun-5.jpg" alt="" width="64" height="80" loading="lazy">
+            <div class="mkart__metin">
+              <p class="mkart__etiket">Reklam ·<span class="mkart__logo"><img src="gorsel/logo/hepsiburada.svg" alt="Hepsiburada" width="76" height="13"></span></p>
+              <p class="mkart__ad">24 parça yemek takımı</p>
+              <p class="mkart__alt"><span class="mkart__fiyat">1.649 TL</span><span class="mkart__saat"><i class="ph ph-check-circle" aria-hidden="true"></i>14:15</span></p>
+            </div>
+          </li>
+          <li class="mkart">
+            <img class="mkart__gorsel" src="gorsel/urun-6.jpg" alt="" width="64" height="80" loading="lazy">
+            <div class="mkart__metin">
+              <p class="mkart__etiket">Reklam ·<span class="mkart__logo"><img src="gorsel/logo/trendyol.svg" alt="Trendyol" width="39" height="16"></span></p>
+              <p class="mkart__ad">Kablosuz dik süpürge</p>
+              <p class="mkart__alt"><span class="mkart__fiyat">8.499 TL</span><span class="mkart__saat"><i class="ph ph-check-circle" aria-hidden="true"></i>09:40</span></p>
+            </div>
+          </li>
+          <li class="mkart">
+            <img class="mkart__gorsel" src="gorsel/urun-7.jpg" alt="" width="64" height="80" loading="lazy">
+            <div class="mkart__metin">
+              <p class="mkart__etiket">Reklam ·<span class="mkart__logo"><img src="gorsel/logo/amazon.svg" alt="Amazon" width="53" height="16"></span></p>
+              <p class="mkart__ad">Nemlendirici krem 50 ml</p>
+              <p class="mkart__alt"><span class="mkart__fiyat">349 TL</span><span class="mkart__saat"><i class="ph ph-check-circle" aria-hidden="true"></i>12:20</span></p>
+            </div>
+          </li>
+          <li class="mkart">
+            <img class="mkart__gorsel" src="gorsel/urun-8.jpg" alt="" width="64" height="80" loading="lazy">
+            <div class="mkart__metin">
+              <p class="mkart__etiket">Reklam ·<span class="mkart__logo"><img src="gorsel/logo/n11.svg" alt="n11" width="45" height="15"></span></p>
+              <p class="mkart__ad">Koşu ayakkabısı</p>
+              <p class="mkart__alt"><span class="mkart__fiyat">2.199 TL</span><span class="mkart__saat"><i class="ph ph-check-circle" aria-hidden="true"></i>10:05</span></p>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
+  </section>
 
   <!-- BUGÜN DOĞRULANDI -->
   <section class="bolum" id="bugun" aria-labelledby="bugun-baslik">
     <div class="kap">
-      <div class="bolum__bas">
+      <div class="bolum__bas bolum__bas--bugun">
         <h2 id="bugun-baslik" data-kelime>Bugün doğrulandı</h2>
+        <div class="filtre" role="group" aria-label="Kategoriye göre süz">
+          <button class="filtre__cip" type="button" data-filtre="hepsi" aria-pressed="true">Tümü</button>
+          <button class="filtre__cip" type="button" data-filtre="ev" aria-pressed="false">Ev &amp; yaşam</button>
+          <button class="filtre__cip" type="button" data-filtre="elektronik" aria-pressed="false">Elektronik</button>
+          <button class="filtre__cip" type="button" data-filtre="giyim" aria-pressed="false">Giyim</button>
+          <button class="filtre__cip" type="button" data-filtre="ayakkabi" aria-pressed="false">Ayakkabı</button>
+        </div>
         <p class="bolum__not"><i class="ph ph-clock" aria-hidden="true"></i>Son kontrol 14:50</p>
+        <p class="gizli" id="filtre-durum" aria-live="polite"></p>
       </div>
-      <div class="izgara" id="magazalar">
+      <div class="izgara">
         <!-- örnek veri -->
-        <article class="kart">
+        <article class="kart" data-kategori="ev">
           <div class="kart__bas"><span class="rozet">Reklam · Trendyol</span><span class="kart__zaman"><i class="ph ph-check-circle" aria-hidden="true"></i>14:30 doğrulandı</span></div>
           <div class="kart__gorsel"><img src="gorsel/urun-1.jpg" alt="Airfryer XL 6,2 L" width="1200" height="1500" loading="lazy" onerror="this.hidden=true"></div>
           <h3 class="kart__ad">Airfryer XL 6,2 L</h3>
@@ -165,7 +215,7 @@
           <p class="kart__not">Fiyat ve stok değişebilir. Komisyonlu bağlantı.</p>
           <a class="dugme dugme--fume dugme--tam" href="#" rel="sponsored nofollow">Mağazada gör<i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
         </article>
-        <article class="kart">
+        <article class="kart" data-kategori="elektronik">
           <div class="kart__bas"><span class="rozet">Reklam · Teknosa</span><span class="kart__zaman"><i class="ph ph-check-circle" aria-hidden="true"></i>11:10 doğrulandı</span></div>
           <div class="kart__gorsel"><img src="gorsel/urun-2.jpg" alt="Kablosuz kulaklık" width="1200" height="1500" loading="lazy" onerror="this.hidden=true"></div>
           <h3 class="kart__ad">Kablosuz kulaklık</h3>
@@ -175,7 +225,7 @@
           <p class="kart__not">Fiyat ve stok değişebilir. Komisyonlu bağlantı.</p>
           <a class="dugme dugme--fume dugme--tam" href="#" rel="sponsored nofollow">Mağazada gör<i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
         </article>
-        <article class="kart">
+        <article class="kart" data-kategori="ayakkabi">
           <div class="kart__bas"><span class="rozet">Reklam · Boyner</span><span class="kart__zaman"><i class="ph ph-check-circle" aria-hidden="true"></i>13:05 doğrulandı</span></div>
           <div class="kart__gorsel"><img src="gorsel/urun-3.jpg" alt="Deri sneaker" width="1200" height="1500" loading="lazy" onerror="this.hidden=true"></div>
           <h3 class="kart__ad">Deri sneaker</h3>
@@ -185,7 +235,7 @@
           <p class="kart__not">Fiyat ve stok değişebilir. Komisyonlu bağlantı.</p>
           <a class="dugme dugme--fume dugme--tam" href="#" rel="sponsored nofollow">Mağazada gör<i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
         </article>
-        <article class="kart">
+        <article class="kart" data-kategori="giyim">
           <div class="kart__bas"><span class="rozet">Reklam · Boyner</span><span class="kart__zaman"><i class="ph ph-check-circle" aria-hidden="true"></i>14:45 doğrulandı</span></div>
           <div class="kart__gorsel"><img src="gorsel/urun-4.jpg" alt="Slim fit jean" width="1200" height="1500" loading="lazy" onerror="this.hidden=true"></div>
           <h3 class="kart__ad">Slim fit jean</h3>
@@ -195,21 +245,21 @@
           <p class="kart__not">Fiyat ve stok değişebilir. Komisyonlu bağlantı.</p>
           <a class="dugme dugme--fume dugme--tam" href="#" rel="sponsored nofollow">Mağazada gör<i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
         </article>
-        <article class="kart">
-          <div class="kart__bas"><span class="rozet">Reklam · Trendyol</span><span class="kart__zaman"><i class="ph ph-check-circle" aria-hidden="true"></i>14:15 doğrulandı</span></div>
+        <article class="kart" data-kategori="ev">
+          <div class="kart__bas"><span class="rozet">Reklam · Hepsiburada</span><span class="kart__zaman"><i class="ph ph-check-circle" aria-hidden="true"></i>14:15 doğrulandı</span></div>
           <div class="kart__gorsel"><img src="gorsel/urun-5.jpg" alt="24 parça yemek takımı" width="1200" height="1500" loading="lazy" onerror="this.hidden=true"></div>
           <h3 class="kart__ad">24 parça yemek takımı</h3>
-          <p class="kart__meta">Trendyol · Ev &amp; yaşam</p>
+          <p class="kart__meta">Hepsiburada · Ev &amp; yaşam</p>
           <p class="kart__fiyat"><strong data-fiyat="1649">1.649,00 TL</strong> <span class="eski"><s>3.299,00 TL</s> <span class="indirim">−%50</span></span></p>
           <p class="kart__durum"><span class="stok">Stokta var</span><span>9 Eki 14:15 itibarıyla</span></p>
           <p class="kart__not">Fiyat ve stok değişebilir. Komisyonlu bağlantı.</p>
           <a class="dugme dugme--fume dugme--tam" href="#" rel="sponsored nofollow">Mağazada gör<i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
         </article>
-        <article class="kart">
-          <div class="kart__bas"><span class="rozet">Reklam · Hepsiburada</span><span class="kart__zaman"><i class="ph ph-check-circle" aria-hidden="true"></i>09:40 doğrulandı</span></div>
+        <article class="kart" data-kategori="ev">
+          <div class="kart__bas"><span class="rozet">Reklam · Trendyol</span><span class="kart__zaman"><i class="ph ph-check-circle" aria-hidden="true"></i>09:40 doğrulandı</span></div>
           <div class="kart__gorsel"><img src="gorsel/urun-6.jpg" alt="Kablosuz dik süpürge" width="1200" height="1500" loading="lazy" onerror="this.hidden=true"></div>
           <h3 class="kart__ad">Kablosuz dik süpürge</h3>
-          <p class="kart__meta">Hepsiburada · Ev &amp; yaşam</p>
+          <p class="kart__meta">Trendyol · Ev &amp; yaşam</p>
           <p class="kart__fiyat"><strong data-fiyat="8499">8.499,00 TL</strong> <span class="eski"><s>11.999,00 TL</s> <span class="indirim">−%29</span></span></p>
           <p class="kart__durum"><span class="stok">Stokta var</span><span>9 Eki 09:40 itibarıyla</span></p>
           <p class="kart__not">Fiyat ve stok değişebilir. Komisyonlu bağlantı.</p>
@@ -219,72 +269,176 @@
     </div>
   </section>
 
-  <!-- KATEGORİLER -->
+  <!-- KATEGORİLER: masaüstü 12 sütunluk bento, tablet 2 sütun, telefonda kaydırılabilir şerit. Sayılar örnek. -->
   <section class="bolum" id="kategoriler" aria-labelledby="kategori-baslik">
     <div class="kap">
-      <div class="bolum__bas">
+      <div class="bolum__bas bolum__bas--yigin">
         <h2 id="kategori-baslik" data-kelime>Kategoriler</h2>
+        <p class="bolum__alt">Bugün en çok doğrulanan: <strong>Ev &amp; yaşam</strong></p>
       </div>
-      <ul class="kategoriler"><!-- sayılar örnek -->
-        <li><a class="kategori" href="#"><span class="kategori__ad">Giyim</span><span class="kategori__sayi"><b>12</b><span>fırsat</span></span><i class="ph ph-arrow-right" aria-hidden="true"></i></a></li>
-        <li><a class="kategori" href="#"><span class="kategori__ad">Ayakkabı</span><span class="kategori__sayi"><b>9</b><span>fırsat</span></span><i class="ph ph-arrow-right" aria-hidden="true"></i></a></li>
-        <li><a class="kategori" href="#"><span class="kategori__ad">Elektronik</span><span class="kategori__sayi"><b>14</b><span>fırsat</span></span><i class="ph ph-arrow-right" aria-hidden="true"></i></a></li>
-        <li><a class="kategori" href="#"><span class="kategori__ad">Ev &amp; yaşam</span><span class="kategori__sayi"><b>21</b><span>fırsat</span></span><i class="ph ph-arrow-right" aria-hidden="true"></i></a></li>
-        <li><a class="kategori" href="#"><span class="kategori__ad">Kozmetik</span><span class="kategori__sayi"><b>6</b><span>fırsat</span></span><i class="ph ph-arrow-right" aria-hidden="true"></i></a></li>
-        <li><a class="kategori" href="#"><span class="kategori__ad">Spor</span><span class="kategori__sayi"><b>5</b><span>fırsat</span></span><i class="ph ph-arrow-right" aria-hidden="true"></i></a></li>
+      <ul class="bento">
+        <li class="karo karo--ev" style="--i:0;--faz:0s">
+          <a class="karo__bag" href="#">
+            <span class="karo__sahne"><img class="karo__obje" src="gorsel/kat-ev.jpg" alt="" width="960" height="1200" loading="lazy"></span>
+            <span class="karo__metin"><span class="karo__ad">Ev &amp; yaşam</span><span class="karo__sayi">21 fırsat</span></span>
+            <span class="karo__ok" aria-hidden="true"><i class="ph ph-arrow-right"></i></span>
+          </a>
+        </li>
+        <li class="karo karo--el" style="--i:1;--faz:-1.4s">
+          <a class="karo__bag" href="#">
+            <span class="karo__sahne"><img class="karo__obje" src="gorsel/kat-elektronik.jpg" alt="" width="960" height="1200" loading="lazy"></span>
+            <span class="karo__metin"><span class="karo__ad">Elektronik</span><span class="karo__sayi">14 fırsat</span></span>
+            <span class="karo__ok" aria-hidden="true"><i class="ph ph-arrow-right"></i></span>
+          </a>
+        </li>
+        <li class="karo karo--gi" style="--i:2;--faz:-2.6s">
+          <a class="karo__bag" href="#">
+            <span class="karo__sahne"><img class="karo__obje" src="gorsel/kat-giyim.jpg" alt="" width="960" height="1200" loading="lazy"></span>
+            <span class="karo__metin"><span class="karo__ad">Giyim</span><span class="karo__sayi">12 fırsat</span></span>
+            <span class="karo__ok" aria-hidden="true"><i class="ph ph-arrow-right"></i></span>
+          </a>
+        </li>
+        <li class="karo karo--ay" style="--i:3;--faz:-4.1s">
+          <a class="karo__bag" href="#">
+            <span class="karo__sahne"><img class="karo__obje" src="gorsel/kat-ayakkabi.jpg" alt="" width="960" height="1200" loading="lazy"></span>
+            <span class="karo__metin"><span class="karo__ad">Ayakkabı</span><span class="karo__sayi">9 fırsat</span></span>
+            <span class="karo__ok" aria-hidden="true"><i class="ph ph-arrow-right"></i></span>
+          </a>
+        </li>
+        <li class="karo karo--ko" style="--i:4;--faz:-3.3s">
+          <a class="karo__bag" href="#">
+            <span class="karo__sahne"><img class="karo__obje" src="gorsel/kat-kozmetik.jpg" alt="" width="960" height="1200" loading="lazy"></span>
+            <span class="karo__metin"><span class="karo__ad">Kozmetik</span><span class="karo__sayi">6 fırsat</span></span>
+            <span class="karo__ok" aria-hidden="true"><i class="ph ph-arrow-right"></i></span>
+          </a>
+        </li>
+        <li class="karo karo--sp" style="--i:5;--faz:-5.2s">
+          <a class="karo__bag" href="#">
+            <span class="karo__sahne"><img class="karo__obje" src="gorsel/kat-spor.jpg" alt="" width="960" height="1200" loading="lazy"></span>
+            <span class="karo__metin"><span class="karo__ad">Spor</span><span class="karo__sayi">5 fırsat</span></span>
+            <span class="karo__ok" aria-hidden="true"><i class="ph ph-arrow-right"></i></span>
+          </a>
+        </li>
       </ul>
     </div>
   </section>
 
-  <!-- NASIL DOĞRULUYORUZ -->
-  <section class="bolum" id="nasil" aria-labelledby="nasil-baslik">
+  <!-- NASIL DOĞRULUYORUZ: masaüstünde yapışık 3D sahne + ilerleme hattı; 1024 px altında her adımın kendi görseli -->
+  <section class="bolum nasil" id="nasil" aria-labelledby="nasil-baslik">
     <div class="kap">
       <div class="bolum__bas">
         <h2 id="nasil-baslik" data-kelime>Nasıl doğruluyoruz</h2>
       </div>
       <div class="nasil__ic">
-        <figure class="nasil__gorsel"><img src="gorsel/dogrulama.jpg" alt="Masada telefon ve not defteri; ürün sayfası açık" width="1800" height="1200" loading="lazy" onerror="this.hidden=true"></figure>
-        <div>
-          <div class="adimlar">
-            <div class="adim adim--aktif">
+        <div class="sahne-kap">
+          <div class="sahne">
+            <div class="sahne__blob" aria-hidden="true"></div>
+            <div class="sahne__yuz">
+              <img class="sahne__gorsel sahne__gorsel--aktif" src="gorsel/adim-bul.jpg" alt="Büyüteç ve fiyat etiketleri: kampanyaları tarıyoruz" width="1600" height="1200" loading="lazy">
+              <img class="sahne__gorsel" src="gorsel/adim-dogrula.jpg" alt="Telefon, onay rozeti, saat ve kalkan: mağazada doğruluyoruz" width="1600" height="1200" loading="lazy">
+              <img class="sahne__gorsel" src="gorsel/adim-paylas.jpg" alt="Telefon, kâğıt uçak, zincir ve megafon: kanıtla paylaşıyoruz" width="1600" height="1200" loading="lazy">
+            </div>
+            <p class="sahne__etiket" aria-hidden="true"><i class="ph ph-magnifying-glass"></i><span>Buluyoruz</span></p>
+          </div>
+          <ol class="ilerleme" aria-label="Doğrulama adımları" style="--ilerleme:0">
+            <li><button class="ilerleme__dugum ilerleme__dugum--aktif ilerleme__dugum--gecti" type="button" data-adim="0" aria-current="step"><span class="ilerleme__nokta" aria-hidden="true"></span><span>Bul</span></button></li>
+            <li><button class="ilerleme__dugum" type="button" data-adim="1"><span class="ilerleme__nokta" aria-hidden="true"></span><span>Doğrula</span></button></li>
+            <li><button class="ilerleme__dugum" type="button" data-adim="2"><span class="ilerleme__nokta" aria-hidden="true"></span><span>Paylaş</span></button></li>
+          </ol>
+        </div>
+
+        <ol class="adimlar">
+          <li class="adim adim--aktif" id="adim-bul">
+            <figure class="adim__gorsel"><img src="gorsel/adim-bul.jpg" alt="Büyüteç ve fiyat etiketleri: kampanyaları tarıyoruz" width="1600" height="1200" loading="lazy"></figure>
+            <div class="adim__ic">
               <h3>Buluyoruz</h3>
               <p>Mağaza kampanyalarını, kupon sayfalarını ve okur ihbarlarını her sabah tarıyoruz.</p>
+              <ul class="kanit kanit--kaynak" aria-label="Taradığımız kaynaklar">
+                <li><i class="ph ph-storefront" aria-hidden="true"></i>Kampanya sayfaları</li>
+                <li><i class="ph ph-ticket" aria-hidden="true"></i>Kupon sayfaları</li>
+                <li><i class="ph ph-envelope-simple" aria-hidden="true"></i>Okur ihbarları</li>
+              </ul>
             </div>
-            <div class="adim">
+          </li>
+          <li class="adim" id="adim-dogrula">
+            <figure class="adim__gorsel"><img src="gorsel/adim-dogrula.jpg" alt="Telefon, onay rozeti, saat ve kalkan: mağazada doğruluyoruz" width="1600" height="1200" loading="lazy"></figure>
+            <div class="adim__ic">
               <h3>Mağazada doğruluyoruz</h3>
               <p>Her ürünün sayfasını açıp fiyatı, sepet indirimini ve stoğu kendi gözümüzle kontrol ediyoruz.</p>
+              <div class="kanit kanit--kart"><!-- örnek kayıt -->
+                <div class="kanit__ust"><span class="rozet">Reklam · Trendyol</span><span class="kanit__ad">Airfryer XL 6,2 L</span></div>
+                <dl class="kanit__liste">
+                  <div><dt><i class="ph ph-check-circle" aria-hidden="true"></i>Saat</dt><dd>14:30</dd></div>
+                  <div><dt><i class="ph ph-check-circle" aria-hidden="true"></i>Fiyat</dt><dd>4.299,00 TL</dd></div>
+                  <div><dt><i class="ph ph-check-circle" aria-hidden="true"></i>Stok</dt><dd>Var</dd></div>
+                </dl>
+              </div>
             </div>
-            <div class="adim">
+          </li>
+          <li class="adim" id="adim-paylas">
+            <figure class="adim__gorsel"><img src="gorsel/adim-paylas.jpg" alt="Telefon, kâğıt uçak, zincir ve megafon: kanıtla paylaşıyoruz" width="1600" height="1200" loading="lazy"></figure>
+            <div class="adim__ic">
               <h3>Kanıtla paylaşıyoruz</h3>
               <p>Yayına yalnız gerçek indirim çıkar; yanında doğrulama saati ve ekran görüntüsü olur.</p>
+              <div class="kanit kanit--paylas"><!-- örnek story -->
+                <div class="story" aria-hidden="true">
+                  <img src="gorsel/urun-1.jpg" alt="" width="1200" height="1500" loading="lazy">
+                  <span class="story__etiket">Reklam · Trendyol</span>
+                  <span class="story__link"><i class="ph ph-link"></i>Mağazada gör</span>
+                </div>
+                <div class="kanit__metin">
+                  <p class="kanit__baslik">Story önizlemesi</p>
+                  <p>İlk karede "Reklam · Trendyol" etiketi, fiyat ve 14:30 doğrulama saati görünür.</p>
+                  <p class="kanit__not"><i class="ph ph-link" aria-hidden="true"></i>Link çıkartması komisyonlu bağlantıya gider.</p>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="yapmiyoruz">
-            <h3>Ne yapmıyoruz</h3>
-            <ul>
-              <li><i class="ph ph-x-circle" aria-hidden="true"></i>Puan ve yorum sayısı göstermiyoruz.</li>
-              <li><i class="ph ph-x-circle" aria-hidden="true"></i>Kanıtsız indirim yazmıyoruz.</li>
-              <li><i class="ph ph-x-circle" aria-hidden="true"></i>Mağazaları yan yana karşılaştırmıyoruz.</li>
-            </ul>
-          </div>
-        </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="yapmiyoruz">
+        <h3>Ne yapmıyoruz</h3>
+        <ul>
+          <li><span class="yapmiyoruz__ikon" aria-hidden="true"><i class="ph ph-star"></i></span>Puan ve yorum sayısı göstermiyoruz.</li>
+          <li><span class="yapmiyoruz__ikon" aria-hidden="true"><i class="ph ph-receipt-x"></i></span>Kanıtsız indirim yazmıyoruz.</li>
+          <li><span class="yapmiyoruz__ikon" aria-hidden="true"><i class="ph ph-scales"></i></span>Mağazaları yan yana karşılaştırmıyoruz.</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- REHBER -->
+  <!-- REHBER: büyük öne çıkan yazı + iki küçük yazı (örnek yazılar, okuma süreleri örnek) -->
   <section class="bolum" id="rehber" aria-labelledby="rehber-baslik">
     <div class="kap">
       <div class="bolum__bas">
         <h2 id="rehber-baslik" data-kelime>Rehber</h2>
       </div>
-      <article class="rehber__kart"><!-- örnek yazı -->
-        <div>
-          <h3>Airfryer alırken nelere bakmalı: hacim, güç, sepet tipi</h3>
-          <p>Dört kişilik bir ev için 5 litre altı sepet yetmiyor, güç arttıkça ısınma süresi kısalıyor. Çıkarılabilir çift sepet temizliği kolaylaştırıyor ama dolapta daha çok yer istiyor.</p>
-        </div>
-        <a class="dugme dugme--fume" href="#">Yazıyı oku<i class="ph ph-arrow-right" aria-hidden="true"></i></a>
-      </article>
+      <div class="rehber">
+        <article class="ryazi ryazi--buyuk">
+          <figure class="ryazi__gorsel"><img src="gorsel/urun-1.jpg" alt="" width="1200" height="1500" loading="lazy"></figure>
+          <div class="ryazi__metin">
+            <p class="ryazi__sure"><i class="ph ph-clock" aria-hidden="true"></i>6 dk</p>
+            <h3><a class="ryazi__bag" href="#">Airfryer alırken nelere bakmalı: hacim, güç, sepet tipi</a></h3>
+            <p>Dört kişilik bir ev için 5 litre altı sepet yetmiyor, güç arttıkça ısınma süresi kısalıyor. Çıkarılabilir çift sepet temizliği kolaylaştırıyor ama dolapta daha çok yer istiyor.</p>
+            <span class="dugme dugme--fume ryazi__dugme" aria-hidden="true">Yazıyı oku<i class="ph ph-arrow-right"></i></span>
+          </div>
+        </article>
+        <article class="ryazi ryazi--kucuk">
+          <div class="ryazi__metin">
+            <p class="ryazi__sure"><i class="ph ph-clock" aria-hidden="true"></i>4 dk</p>
+            <h3><a class="ryazi__bag" href="#">Kablosuz kulaklıkta pil ömrü nasıl okunur</a></h3>
+          </div>
+          <figure class="ryazi__gorsel"><img src="gorsel/urun-2.jpg" alt="" width="1200" height="1500" loading="lazy"></figure>
+        </article>
+        <article class="ryazi ryazi--kucuk">
+          <div class="ryazi__metin">
+            <p class="ryazi__sure"><i class="ph ph-clock" aria-hidden="true"></i>3 dk</p>
+            <h3><a class="ryazi__bag" href="#">Deri sneaker temizliği: üç adımda bakım</a></h3>
+          </div>
+          <figure class="ryazi__gorsel"><img src="gorsel/urun-3.jpg" alt="" width="1200" height="1500" loading="lazy"></figure>
+        </article>
+      </div>
     </div>
   </section>
 
